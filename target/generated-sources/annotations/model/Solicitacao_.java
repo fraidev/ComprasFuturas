@@ -6,12 +6,13 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import model.FormaDePagamentos;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-11-18T19:21:39")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-11-18T22:37:24")
 @StaticMetamodel(Solicitacao.class)
 public class Solicitacao_ { 
 
     public static volatile SingularAttribute<Solicitacao, Double> preco;
     public static volatile SingularAttribute<Solicitacao, List> itens;
+    public static volatile SingularAttribute<Solicitacao, String> usuarioNome;
     public static volatile SingularAttribute<Solicitacao, Long> id;
     public static volatile SingularAttribute<Solicitacao, FormaDePagamentos> formaDePagamento;
 

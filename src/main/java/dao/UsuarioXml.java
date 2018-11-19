@@ -31,7 +31,6 @@ public class UsuarioXml {
 
     public void alterar(Usuario usuario) throws Exception {
         Xml.gravaXml(nomeArquivo, usuarios);
-        
     }
     
     public List<Usuario> getLista() {

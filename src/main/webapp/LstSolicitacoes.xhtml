@@ -8,6 +8,11 @@
     </h:head>
     <h:body>
         <h:form>
+            <h:panelGrid columns="2" >
+                <p:outputLabel value="Usuario" />
+                <p:outputLabel value="#{guiComprasFuturas.usuario.nomeDeUsuario}" />
+            </h:panelGrid>
+            <br />
             <p:commandButton value="Novo" action="#{guiComprasFuturas.incluir()}" ajax="false" />
             <br />
             <br />

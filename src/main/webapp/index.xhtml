@@ -8,7 +8,6 @@
     </h:head>
     <h:body>
         <h:form>
-            <p:outputLabel value="Login" />
             <h:panelGrid columns="2" >
                 <p:outputLabel value="Usuario" />
                 <p:inputText value="#{guiComprasFuturas.usuario.nomeDeUsuario}" />
@@ -16,7 +15,6 @@
                 <p:inputText value="#{guiComprasFuturas.usuario.senha}" />
             </h:panelGrid>
             <p:commandButton value="Entrar" action="#{guiComprasFuturas.iniciar()}" ajax="false" />
-            <br />
             <p:commandButton value="Cadastro" action="#{guiComprasFuturas.cadastrar()}" ajax="false" />
         </h:form>
     </h:body>

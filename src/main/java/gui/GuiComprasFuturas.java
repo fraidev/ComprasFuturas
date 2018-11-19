@@ -11,6 +11,7 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
+import static javafx.scene.input.KeyCode.T;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -34,6 +35,7 @@ public class GuiComprasFuturas implements Serializable {
     private Usuario usuario = new Usuario();
     private UsuarioXml usuarioXml = new UsuarioXml();
     private Boolean alterando = false;
+    private Boolean logado = false;
 
     /**
      * Creates a new instance of GuiComprasFuturas
@@ -42,16 +44,41 @@ public class GuiComprasFuturas implements Serializable {
     }
     
     public String iniciar(){
-        solicitacoes = solicitacaoDao.getSolicitacoes();
+        solicitacoes = solicitacaoDao.getSolicitacoes(usuario.getNomeDeUsuario());
         usuarios = usuarioXml.getLista();
         
         try {
-            if(usuarios.get(0).getNomeDeUsuario().equals(this.usuario.getNomeDeUsuario()) && usuarios.get(0).getSenha().equals(this.usuario.getSenha())){
-                if(alterando == false){
+            if(!logado){
+                for (Usuario u: usuarios){
+                    if(u.getNomeDeUsuario().equals(this.usuario.getNomeDeUsuario()) && u.getSenha().equals(this.usuario.getSenha())){
+                        if(alterando == false){
+                            usuarioXml.gravar(this.usuario);
+                            logado = true;
+                            return "LstSolicitacoes";
+                        }else{
+                            return "LstSolicitacoes";
+                        }
+                    }else{
+                        return "";
+                    }
+                }
+            }
+        }
+        catch (Exception e) {
+            exibirMensagem(e.getMessage());
+        }
+        return "LstSolicitacoes";
+    }
+    
+    public String cadastrar(){
+        solicitacoes = solicitacaoDao.getSolicitacoes(usuario.getNomeDeUsuario());
+        try {
+            if(!logado){
+                if (alterando == false) {
                     usuarioXml.gravar(this.usuario);
+                    logado = true;
                     return "LstSolicitacoes";
-                } else {
-                    usuarioXml.alterar(this.usuario);
+                }else{
                     return "LstSolicitacoes";
                 }
             }
@@ -59,23 +86,7 @@ public class GuiComprasFuturas implements Serializable {
         catch (Exception e) {
             exibirMensagem(e.getMessage());
         }
-        return "";
-    }
-    
-    public String cadastrar(){
-        solicitacoes = solicitacaoDao.getSolicitacoes();
-        try {
-            if (alterando == false) {
-                usuarioXml.gravar(this.usuario);
-            } else {
-                usuarioXml.alterar(this.usuario);
-            }
-            return "LstSolicitacoes";
-        }
-        catch (Exception e) {
-            exibirMensagem(e.getMessage());
-        }
-        return "";
+        return "LstSolicitacoes";
     }
     
     public void exibirMensagem(String mensagem) {
@@ -87,7 +98,7 @@ public class GuiComprasFuturas implements Serializable {
     }
     
     public String incluir() {
-        solicitacao = new Solicitacao();
+        solicitacao = new Solicitacao(this.usuario);
         alterando = true;
         return "CadSolicitacao";
     }

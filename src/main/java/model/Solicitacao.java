@@ -26,6 +26,14 @@ public class Solicitacao implements Serializable {
     private double preco;
     private FormaDePagamentos formaDePagamento;
     private List<TipoItem> itens;
+    private String usuarioNome;
+    
+    public Solicitacao(){
+    }
+    
+    public Solicitacao(Usuario usuario){
+        this.usuarioNome = usuario.getNomeDeUsuario();
+    }
     
     public Long getId() {
         return id;
@@ -33,6 +41,10 @@ public class Solicitacao implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+    
+    public String getUsuarioNome() {
+        return this.usuarioNome;
     }
     
     public double getPreco() {
