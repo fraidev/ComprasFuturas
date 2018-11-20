@@ -19,7 +19,6 @@ import model.Solicitacao;
  */
 @Stateless
 public class SolicitacaoDao {
-    
     @PersistenceContext
     EntityManager em;
     
@@ -33,16 +32,8 @@ public class SolicitacaoDao {
         em.remove(em.merge(solicitacao));
     }
     
-    public List<Solicitacao> getSolicitacoes (String usuarioNome){
+    public List<Solicitacao> getSolicitacoes (){
         Query q = em.createQuery("select s from  Solicitacao s order by s.id");
-        List<Solicitacao> solicitacoes = q.getResultList();
-        List<Solicitacao> solicitacoesResultado = new ArrayList<>();
-        for(Solicitacao s: solicitacoes){
-            String retval = s.getUsuarioNome();
-            if(usuarioNome.equals(retval)){
-                solicitacoesResultado.add(s);
-            }
-        }
-        return solicitacoesResultado;
+        return q.getResultList();
     }
 }

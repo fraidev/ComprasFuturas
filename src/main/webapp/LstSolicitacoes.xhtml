@@ -13,10 +13,10 @@
                 <p:outputLabel value="#{guiComprasFuturas.usuario.nomeDeUsuario}" />
             </h:panelGrid>
             <br />
-            <p:commandButton value="Novo" action="#{guiComprasFuturas.incluir()}" ajax="false" />
+            <p:commandButton value="Novo" action="#{guiSolicitacao.incluir()}" ajax="false" />
             <br />
             <br />
-            <p:dataTable value="#{guiComprasFuturas.solicitacoes}" var="s">
+            <p:dataTable value="#{guiSolicitacao.solicitacoes}" var="s">
                 <p:column headerText="ID">
                     <p:outputLabel value="#{s.id}" />
                 </p:column>
@@ -24,8 +24,8 @@
                     <p:outputLabel value="#{s.preco}" />
                 </p:column>
                 <p:column >
-                    <p:commandButton value="Alterar" action="#{guiComprasFuturas.alterar(s)}" ajax="false"/>
-                    <p:commandButton value="Excluir" action="#{guiComprasFuturas.excluir(s)}" ajax="false"/>
+                    <p:commandButton value="Alterar" action="#{guiSolicitacao.alterar(s)}" ajax="false"/>
+                    <p:commandButton value="Excluir" action="#{guiSolicitacao.excluir(s)}" ajax="false"/>
                 </p:column>
             </p:dataTable>
         </h:form>

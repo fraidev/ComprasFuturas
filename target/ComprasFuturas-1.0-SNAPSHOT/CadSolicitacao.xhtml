@@ -10,13 +10,14 @@
         <h:form>
             <h:panelGrid columns="2" >
                 <p:outputLabel value="Id" />
-                <p:outputLabel value="#{guiComprasFuturas.solicitacao.id}" />
+                <p:outputLabel value="#{guiSolicitacao.solicitacao.id}" />
                 <p:outputLabel value="Preço" />
-                <p:inputText value="#{guiComprasFuturas.solicitacao.preco}" />
+                <p:inputText value="#{guiSolicitacao.solicitacao.preco}" />
             </h:panelGrid>
             
             <br />
-            <p:commandButton value="Gravar" action="#{guiComprasFuturas.gravar()}" ajax="false" />
+            <p:commandButton value="Gravar" action="#{guiSolicitacao.gravar()}" ajax="false" />
+            <p:commandButton value="Voltar" action="#{guiSolicitacao.voltar()}" ajax="false" />
         </h:form>
     </h:body>
 </html>

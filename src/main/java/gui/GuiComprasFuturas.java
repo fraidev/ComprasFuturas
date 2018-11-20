@@ -5,14 +5,11 @@
  */
 package gui;
 
-import dao.SolicitacaoDao;
 import dao.UsuarioXml;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
-import static javafx.scene.input.KeyCode.T;
-import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import model.Solicitacao;
@@ -25,17 +22,12 @@ import model.Usuario;
 @Named(value = "guiComprasFuturas")
 @SessionScoped
 public class GuiComprasFuturas implements Serializable {
-    @EJB
-    SolicitacaoDao solicitacaoDao;
-    
-    
     private List<Solicitacao> solicitacoes;
     private Solicitacao solicitacao;
     private List<Usuario> usuarios;
     private Usuario usuario = new Usuario();
     private UsuarioXml usuarioXml = new UsuarioXml();
     private Boolean alterando = false;
-    private Boolean logado = false;
 
     /**
      * Creates a new instance of GuiComprasFuturas
@@ -44,49 +36,31 @@ public class GuiComprasFuturas implements Serializable {
     }
     
     public String iniciar(){
-        solicitacoes = solicitacaoDao.getSolicitacoes(usuario.getNomeDeUsuario());
+//        solicitacoes = solicitacaoDao.getSolicitacoes();
         usuarios = usuarioXml.getLista();
         
         try {
-            if(!logado){
-                for (Usuario u: usuarios){
-                    if(u.getNomeDeUsuario().equals(this.usuario.getNomeDeUsuario()) && u.getSenha().equals(this.usuario.getSenha())){
-                        if(alterando == false){
-                            usuarioXml.gravar(this.usuario);
-                            logado = true;
-                            return "LstSolicitacoes";
-                        }else{
-                            return "LstSolicitacoes";
-                        }
-                    }else{
-                        return "";
-                    }
+            for (Usuario u: usuarios){
+                if(u.getNomeDeUsuario().equals(this.usuario.getNomeDeUsuario()) && u.getSenha().equals(this.usuario.getSenha())){
+                    return "Dashboard";
                 }
             }
         }
         catch (Exception e) {
             exibirMensagem(e.getMessage());
         }
-        return "LstSolicitacoes";
+        return "";
     }
     
     public String cadastrar(){
-        solicitacoes = solicitacaoDao.getSolicitacoes(usuario.getNomeDeUsuario());
         try {
-            if(!logado){
-                if (alterando == false) {
-                    usuarioXml.gravar(this.usuario);
-                    logado = true;
-                    return "LstSolicitacoes";
-                }else{
-                    return "LstSolicitacoes";
-                }
-            }
+            usuarioXml.gravar(this.usuario);
         }
         catch (Exception e) {
             exibirMensagem(e.getMessage());
+            return "";
         }
-        return "LstSolicitacoes";
+        return "Dashboard";
     }
     
     public void exibirMensagem(String mensagem) {
@@ -97,38 +71,8 @@ public class GuiComprasFuturas implements Serializable {
         context.addMessage(null, message);
     }
     
-    public String incluir() {
-        solicitacao = new Solicitacao(this.usuario);
-        alterando = true;
-        return "CadSolicitacao";
-    }
-
-    public String alterar(Solicitacao solicitacao) {
-        this.solicitacao = solicitacao;
-        alterando = true;
-        return "CadSolicitacao";
-    }
-    
-    public String excluir(Solicitacao solicitacao) {
-        solicitacaoDao.excluir(solicitacao);
-        return iniciar();
-    }
-    
-    public String gravar() {
-        if (alterando) {
-            solicitacaoDao.alterar(solicitacao);
-        } else {
-            solicitacaoDao.incluir(solicitacao);
-        }
-        return iniciar();
-    }
-
-    public SolicitacaoDao getSolicitacaoDao() {
-        return solicitacaoDao;
-    }
-
-    public void setSolicitacaoDao(SolicitacaoDao solicitacaoDao) {
-        this.solicitacaoDao = solicitacaoDao;
+    public String goToSolicitacoes(){
+        return "LstSolicitacoes";
     }
 
     public List<Solicitacao> getSolicitacoes() {
