@@ -6,6 +6,7 @@
 package model;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,10 +25,12 @@ public class Solicitacao implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private double preco;
-    private FormaDePagamentos formaDePagamento;
-    private List<TipoItem> itens;
+    private Status status;
+    private List<Item> itens;
     
     public Solicitacao(){
+        this.status = Status.aberto;
+        this.preco = 0;
     }
     
     public Long getId() {
@@ -46,13 +49,20 @@ public class Solicitacao implements Serializable {
         this.preco = preco;
     }
     
-    
-    public double getFormaDePagamentos() {
-        return preco;
+    public Status getStatus(){
+        return status;
     }
 
-    public void setFormaDePagamentos(FormaDePagamentos formaDePagamento) {
-        this.formaDePagamento = formaDePagamento;
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+    
+    public List<Item> getItens(){
+        return itens;
+    }
+
+    public void setItens(List<Item> itens) {
+        this.itens = itens;
     }
 
     @Override

@@ -18,15 +18,15 @@
             <br />
             <br />
             <p:dataTable value="#{guiSolicitacao.solicitacoes}" var="s">
-                <p:column headerText="ID">
+                <p:column headerText="Id">
                     <p:outputLabel value="#{s.id}" />
                 </p:column>
-                <p:column headerText="Preco">
-                    <p:outputLabel value="#{s.preco}" />
+                <p:column headerText="Status">
+                    <p:outputLabel value="#{s.status}" />
                 </p:column>
                 <p:column >
-                    <p:commandButton value="Alterar" action="#{guiSolicitacao.alterar(s)}" ajax="false"/>
                     <p:commandButton value="Excluir" action="#{guiSolicitacao.excluir(s)}" ajax="false"/>
+                    <p:commandButton value="Itens" action="#{guiSolicitacao.excluir(s)}" ajax="false"/>
                 </p:column>
             </p:dataTable>
         </h:form>

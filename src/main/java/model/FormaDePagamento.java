@@ -9,9 +9,9 @@ package model;
  *
  * @author Felipe Cardozo
  */
-public enum FormaDePagamentos {
+public enum FormaDePagamento {
     dinheiro,
     cheque,
     chequePre,
-    cartão
+    cartao
 }

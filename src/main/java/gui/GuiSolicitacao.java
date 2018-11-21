@@ -25,7 +25,6 @@ public class GuiSolicitacao implements Serializable {
     
     private List<Solicitacao> solicitacoes;
     private Solicitacao solicitacao;
-    private Boolean alterando = false;
 
     /**
      * Creates a new instance of GuiComprasFuturas
@@ -40,27 +39,12 @@ public class GuiSolicitacao implements Serializable {
     
     public String incluir() {
         this.solicitacao = new Solicitacao();
-        alterando = true;
-        return "CadSolicitacao";
-    }
-
-    public String alterar(Solicitacao solicitacao) {
-        this.solicitacao = solicitacao;
-        alterando = true;
-        return "CadSolicitacao";
+        solicitacaoDao.incluir(solicitacao);
+        return abrir();
     }
     
     public String excluir(Solicitacao solicitacao) {
         solicitacaoDao.excluir(solicitacao);
-        return abrir();
-    }
-    
-    public String gravar() {
-        if (alterando) {
-            solicitacaoDao.alterar(solicitacao);
-        } else {
-            solicitacaoDao.incluir(solicitacao);
-        }
         return abrir();
     }
     
