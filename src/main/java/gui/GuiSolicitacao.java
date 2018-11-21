@@ -52,7 +52,7 @@ public class GuiSolicitacao implements Serializable {
     
     public String excluir(Solicitacao solicitacao) {
         solicitacaoDao.excluir(solicitacao);
-        return "LstSolicitacoes";
+        return abrir();
     }
     
     public String gravar() {

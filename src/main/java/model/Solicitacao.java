@@ -77,7 +77,7 @@ public class Solicitacao implements Serializable {
 
     @Override
     public String toString() {
-        return "com.fsma.model.Solicitacao[ id=" + id + " ]";
+        return "model.Solicitacao[ id=" + id + " ]";
     }
 
 }

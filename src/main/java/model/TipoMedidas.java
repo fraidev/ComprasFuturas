@@ -10,7 +10,7 @@ package model;
  * @author Felipe Cardozo
  */
 public enum TipoMedidas {
-    Kg,
-    ml,
-    m
+    kg,
+    m,
+    ml
 }
