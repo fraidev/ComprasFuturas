@@ -6,6 +6,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,11 +21,11 @@ public class Produto implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String nome;
-    private String descricao;
-    private TipoMedidas medida;
-    private Double valorDaMedida;
+    public Long id;
+    public String nome;
+    public String descricao;
+    public TipoMedidas medida;
+    public Double valorDaMedida;
     
     public Produto(){
     }
@@ -70,14 +71,59 @@ public class Produto implements Serializable {
     }
 
     @Override
+    public String toString(){
+        return this.nome + " - " + this.descricao;
+    }
+    
+    @Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
-
+   
     @Override
-    public String toString() {
-        return "model.Produto[ id=" + id + " ]";
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Produto other = (Produto) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.descricao, other.descricao)) {
+            return false;
+        }
+        if (!Objects.equals(this.medida, other.medida)) {
+            return false;
+        }
+        if (!Objects.equals(this.valorDaMedida, other.valorDaMedida)) {
+            return false;
+        }
+        return true;
+    }
+
+    public String getChave() {
+        String med = medida.toString();
+        String valmed = valorDaMedida.toString();
+        String ident = Long.toString(id);
+        return ident + ";" + nome + ";" + descricao + ";" + med + ";" + valmed;
+    }
+    public void setChave(String chave) {
+        String campo[] = chave.split(";");
+        id = Long.parseLong(campo[0]);
+        nome = campo[1];
+        descricao = campo[2];
+        medida = TipoMedidas.valueOf(campo[3]);
+        valorDaMedida = Double.parseDouble(campo[4]);
     }
 }

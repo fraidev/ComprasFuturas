@@ -5,12 +5,14 @@
  */
 package gui;
 
+import dao.ItemDao;
 import dao.SolicitacaoDao;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import model.Item;
 import model.Solicitacao;
 
 /**
@@ -22,9 +24,14 @@ import model.Solicitacao;
 public class GuiSolicitacao implements Serializable {
     @EJB
     SolicitacaoDao solicitacaoDao;
+    @EJB
+    ItemDao itemDao;
     
     private List<Solicitacao> solicitacoes;
     private Solicitacao solicitacao;
+    private List<Item> itens;
+    private Item item;
+
 
     /**
      * Creates a new instance of GuiComprasFuturas
@@ -43,9 +50,35 @@ public class GuiSolicitacao implements Serializable {
         return abrir();
     }
     
+    public String abrirCadItemSolicitacao() {
+        item = new Item(solicitacao);
+        return "CadItemSolicitacao";
+    }
+    
     public String excluir(Solicitacao solicitacao) {
         solicitacaoDao.excluir(solicitacao);
         return abrir();
+    }
+    
+    public String abrirItensDeSolicitacao() {
+        return "LstItensSolicitacao";
+    }
+    
+    public String gravarItem() {
+        itemDao.incluir(item);
+        return abrir();
+    }
+    
+    public String voltarItensSolicitacao(){
+        return abrirItensDeSolicitacao();
+    }
+    
+    public String alterarItem(Item item) {
+        return abrir();
+    }
+    
+    public String abrirCompraDeItem(Item item) {
+        return "CompraDeItem";
     }
     
     public String voltar(){
@@ -59,7 +92,7 @@ public class GuiSolicitacao implements Serializable {
     public void setSolicitacaoDao(SolicitacaoDao solicitacaoDao) {
         this.solicitacaoDao = solicitacaoDao;
     }
-
+    
     public List<Solicitacao> getSolicitacoes() {
         return solicitacoes;
     }
@@ -74,5 +107,28 @@ public class GuiSolicitacao implements Serializable {
 
     public void setSolicitacao(Solicitacao solicitacao) {
         this.solicitacao = solicitacao;
+    }
+    public ItemDao getItemDao() {
+        return itemDao;
+    }
+
+    public void setItemDao(SolicitacaoDao solicitacaoDao) {
+        this.solicitacaoDao = solicitacaoDao;
+    }
+    
+    public List<Item> getItens() {
+        return itens;
+    }
+    
+    public void setItens(List<Item> itens) {
+        this.itens = itens;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
     }
 }

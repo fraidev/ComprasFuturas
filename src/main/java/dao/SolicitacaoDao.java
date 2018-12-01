@@ -5,7 +5,6 @@
  */
 package dao;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -31,9 +30,8 @@ public class SolicitacaoDao {
     public void excluir (Solicitacao solicitacao){
         em.remove(em.merge(solicitacao));
     }
-    
     public List<Solicitacao> getSolicitacoes (){
-        Query q = em.createQuery("select s from  Solicitacao s order by s.id");
+        Query q = em.createQuery("select s from Solicitacao s order by s.id");
         return q.getResultList();
     }
 }

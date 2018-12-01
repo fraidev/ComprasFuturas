@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -11,24 +12,36 @@
             <h:panelGrid columns="2" >
                 <p:outputLabel value="Usuario" />
                 <p:outputLabel value="#{guiComprasFuturas.usuario.nomeDeUsuario}" />
-                <p:commandButton value="Novo Item de Produtos" action="#{guiSolicitacao.incluir()}" ajax="false" />
-                <p:commandButton value="Voltar" action="Dashboard" ajax="false" />
+                <p:commandButton value="Novo Item de Produtos" action="#{guiSolicitacao.abrirCadItemSolicitacao()}" ajax="false" />
+                <p:commandButton value="Voltar" action="LstSolicitacoes" ajax="false" />
             </h:panelGrid>
             <br />
-            <p:dataTable value="#{guiSolicitacao.solicitacao.itens}" var="s">
+            <p:dataTable value="#{guiSolicitacao.solicitacao.itens}" var="i">
                 <p:column headerText="Id">
-                    <p:outputLabel value="#{s.id}" />
+                    <p:outputLabel value="#{i.id}" />
                 </p:column>
-                <p:column headerText="Status">
-                    <p:outputLabel value="#{s.status}" />
+                <p:column headerText="Produto">
+                    <p:outputLabel value="#{i.produto.nome}" />
                 </p:column>
-                <p:column >
-                    <p:commandButton value="Excluir" action="#{guiSolicitacao.excluir(s)}" ajax="false"/>
-                    <p:commandButton value="Itens" action="#{guiSolicitacao.excluir(s)}" ajax="false"/>
+                <p:column headerText="Quantidade">
+                    <p:outputLabel value="#{i.quantidade}" />
+                </p:column>
+                <p:column headerText="Forma de Pagamento">
+                    <p:outputLabel value="#{i.formaDePagamento}" />
+                </p:column>
+                <p:column headerText="Data da Compra">
+                    <p:outputLabel value="#{i.dataDaCompra}" />
+                </p:column>
+                <p:column headerText="Local da Compra">
+                    <p:outputLabel value="#{i.localDaCompra}" />
+                </p:column>
+                <p:column>
+                    <p:commandButton value="Excluir" action="#{guiSolicitacao.excluir(i)}" ajax="false"/>
+                    <p:commandButton value="Alterar" action="#{guiSolicitacao.alterarItem(i)}" ajax="false"/>
+                    <p:commandButton value="Itens" action="#{guiSolicitacao.abrirCompraDeItem(i)}" ajax="false"/>
                 </p:column>
             </p:dataTable>
         </h:form>
-    </h:body>
     </h:body>
 </html>
 

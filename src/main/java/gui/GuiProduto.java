@@ -6,14 +6,12 @@
 package gui;
 
 import dao.ProdutoDao;
-import dao.SolicitacaoDao;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import model.Produto;
-import model.Solicitacao;
 
 /**
  *
@@ -78,11 +76,11 @@ public class GuiProduto implements Serializable {
         this.produtoDao = produtoDao;
     }
 
-    public List<Produto> getSolicitacoes() {
+    public List<Produto> getProdutos() {
         return produtos;
     }
     
-    public void setSolicitacoes(List<Produto> produtos) {
+    public void setProdutos(List<Produto> produtos) {
         this.produtos = produtos;
     }
 
@@ -90,7 +88,7 @@ public class GuiProduto implements Serializable {
         return produto;
     }
 
-    public void setSolicitacao(Produto produto) {
+    public void setProduto(Produto produto) {
         this.produto = produto;
     }
 }

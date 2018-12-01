@@ -1,0 +1,16 @@
+gui\GuiComprasFuturas.class
+dao\SolicitacaoDao.class
+model\Solicitacao_.class
+model\Solicitacao.class
+model\Usuario.class
+model\Status.class
+model\FormaDePagamento.class
+dao\Xml.class
+model\TipoMedidas.class
+dao\ItemDao.class
+dao\ProdutoDao.class
+gui\GuiProduto.class
+gui\GuiSolicitacao.class
+model\Item.class
+model\Item_.class
+dao\UsuarioXml.class

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:messages id="errorMessages" style="color:red;margin:8px;" />
+            <h:panelGrid columns="2" >
+                <p:outputLabel value="Produto" />
+                <p:selectOneMenu id="produto" value="#{guiSolicitacao.item.produto}" style="width:125px">
+                    <f:selectItems value="#{guiProduto.produtoDao.produtos}" var="p" itemLabel="#{p}" itemValue="#{p}" />
+                </p:selectOneMenu>
+                
+                <p:outputLabel value="Quantidade" />
+                <p:inputText value="#{guiSolicitacao.item.quantidade}" />
+            </h:panelGrid>
+            
+            <br />
+            <p:commandButton value="Gravar" action="#{guiSolicitacao.gravarItem()}" ajax="false" />
+            <p:commandButton value="Voltar" action="#{guiSolicitacao.voltar()}" ajax="false" />
+        </h:form>
+    </h:body>
+</html>
+

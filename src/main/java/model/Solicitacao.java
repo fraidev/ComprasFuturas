@@ -6,12 +6,13 @@
 package model;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -26,6 +27,7 @@ public class Solicitacao implements Serializable {
     private Long id;
     private double preco;
     private Status status;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "solicitacao")
     private List<Item> itens;
     
     public Solicitacao(){
@@ -64,7 +66,7 @@ public class Solicitacao implements Serializable {
     public void setItens(List<Item> itens) {
         this.itens = itens;
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;
