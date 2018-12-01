@@ -64,8 +64,15 @@ public class GuiSolicitacao implements Serializable {
         return "LstItensSolicitacao";
     }
     
+    public String abrirItensDeSolicitacao(Solicitacao solicitacao) {
+        this.solicitacao = solicitacao;
+        this.itens = itemDao.getItensByIdSolicitacao(solicitacao.getId());
+        return "LstItensSolicitacao";
+    }
+    
     public String gravarItem() {
         itemDao.incluir(item);
+//        solicitacaoDao.alterar(solicitacao);
         return abrir();
     }
     

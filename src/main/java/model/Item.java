@@ -26,7 +26,7 @@ public class Item implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
      Long id;
     private int quantidade;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private Produto produto;
     @ManyToOne
     private Solicitacao solicitacao;

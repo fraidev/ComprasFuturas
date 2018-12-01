@@ -21,11 +21,11 @@ public class Produto implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
-    public String nome;
-    public String descricao;
-    public TipoMedidas medida;
-    public Double valorDaMedida;
+    private Long id;
+    private String nome;
+    private String descricao;
+    private TipoMedidas medida;
+    private Double valorDaMedida;
     
     public Produto(){
     }

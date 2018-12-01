@@ -8,7 +8,7 @@ import model.FormaDePagamento;
 import model.Produto;
 import model.Solicitacao;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-12-01T18:28:06")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-12-01T20:27:41")
 @StaticMetamodel(Item.class)
 public class Item_ { 
 

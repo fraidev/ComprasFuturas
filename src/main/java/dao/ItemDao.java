@@ -34,4 +34,8 @@ public class ItemDao {
         Query q = em.createQuery("select i from Item i order by i.id");
         return q.getResultList();
     }
+    public List<Item> getItensByIdSolicitacao (Long id){
+        Query q = em.createQuery("select i from Item i WHERE i.solicitacao.id = :id").setParameter("id",id);
+        return q.getResultList();
+    }
 }

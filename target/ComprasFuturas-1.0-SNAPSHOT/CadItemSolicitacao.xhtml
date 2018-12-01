@@ -15,7 +15,6 @@
                 <p:selectOneMenu id="produto" value="#{guiSolicitacao.item.produto}" style="width:125px">
                     <f:selectItems value="#{guiProduto.produtoDao.produtos}" var="p" itemLabel="#{p}" itemValue="#{p}" />
                 </p:selectOneMenu>
-                
                 <p:outputLabel value="Quantidade" />
                 <p:inputText value="#{guiSolicitacao.item.quantidade}" />
             </h:panelGrid>

@@ -12,11 +12,13 @@
             <h:panelGrid columns="2" >
                 <p:outputLabel value="Usuario" />
                 <p:outputLabel value="#{guiComprasFuturas.usuario.nomeDeUsuario}" />
+                <p:outputLabel value="Solicitacao" />
+                <p:outputLabel value="#{guiSolicitacao.solicitacao.id}" />
                 <p:commandButton value="Novo Item de Produtos" action="#{guiSolicitacao.abrirCadItemSolicitacao()}" ajax="false" />
                 <p:commandButton value="Voltar" action="LstSolicitacoes" ajax="false" />
             </h:panelGrid>
             <br />
-            <p:dataTable value="#{guiSolicitacao.solicitacao.itens}" var="i">
+            <p:dataTable value="#{guiSolicitacao.itens}" var="i">
                 <p:column headerText="Id">
                     <p:outputLabel value="#{i.id}" />
                 </p:column>

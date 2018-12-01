@@ -7,7 +7,7 @@ package model;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.CascadeType;
+import static javax.persistence.CascadeType.ALL;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,7 +27,7 @@ public class Solicitacao implements Serializable {
     private Long id;
     private double preco;
     private Status status;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "solicitacao")
+    @OneToMany(cascade = ALL, mappedBy = "solicitacao")
     private List<Item> itens;
     
     public Solicitacao(){
