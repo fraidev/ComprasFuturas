@@ -11,7 +11,6 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Objects;
 import javax.ejb.EJB;
 import model.Item;
 import model.Solicitacao;

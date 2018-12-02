@@ -8,9 +8,12 @@
     </h:head>
     <h:body>
         <h:form>
-            <h:panelGrid columns="2" >
+            <h:messages id="errorMessages" style="color:red;margin:8px;" />
+            <h:panelGrid columns="4" >
                 <p:commandButton value="Pedidos" action="#{guiProduto.abrir()}" />
                 <p:commandButton value="Solicitacoes" action="#{guiSolicitacao.abrir()}"/>
+                <p:commandButton value="Relatório de Lista de Compra" action="#{guiRelatorioCompras.abrir()}"/>
+                <p:commandButton value="Relatório Geral de Produtos Comprados" action="#{guiRelatorioGeral.abrir()}"/>
             </h:panelGrid>
         </h:form>
     </h:body>

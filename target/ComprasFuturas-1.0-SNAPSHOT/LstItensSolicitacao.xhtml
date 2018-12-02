@@ -5,7 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Lista de Itens de Solicitacao</title>
     </h:head>
     <h:body>
         <h:form>
@@ -27,8 +27,11 @@
                 <p:column headerText="Produto">
                     <p:outputLabel value="#{i.produto.nome}" />
                 </p:column>
-                <p:column headerText="Quantidade">
-                    <p:outputLabel value="#{i.quantidade}" />
+                <p:column headerText="Valor Da Medida">
+                    <p:outputLabel value="#{i.produto.valorDaMedida}" />
+                </p:column>
+                <p:column headerText="Medida">
+                    <p:outputLabel value="#{i.produto.medida}" />
                 </p:column>
                 <p:column headerText="Forma de Pagamento">
                     <p:outputLabel value="#{i.formaDePagamento}" />
@@ -38,6 +41,15 @@
                 </p:column>
                 <p:column headerText="Local da Compra">
                     <p:outputLabel value="#{i.localDaCompra}" />
+                </p:column>
+                <p:column headerText="Preço Unitário">
+                    <p:outputLabel value="#{i.precoUnitario}" />
+                </p:column>
+                <p:column headerText="Quantidade">
+                    <p:outputLabel value="#{i.quantidade}" />
+                </p:column>
+                <p:column headerText="Preço Total">
+                    <p:outputLabel value="#{i.precoTotal}" />
                 </p:column>
                 <p:column headerText="Status">
                     <p:outputLabel value="#{i.statusItem}" />

@@ -3,6 +3,7 @@ C:\Git\ComprasFuturas\src\main\java\model\Usuario.java
 C:\Git\ComprasFuturas\src\main\java\gui\GuiProduto.java
 C:\Git\ComprasFuturas\src\main\java\dao\SolicitacaoDao.java
 C:\Git\ComprasFuturas\src\main\java\model\Solicitacao.java
+C:\Git\ComprasFuturas\src\main\java\gui\GuiRelatorioGeral.java
 C:\Git\ComprasFuturas\src\main\java\model\Produto.java
 C:\Git\ComprasFuturas\src\main\java\model\TipoMedidas.java
 C:\Git\ComprasFuturas\src\main\java\model\Status.java
@@ -14,5 +15,6 @@ C:\Git\ComprasFuturas\src\main\java\model\StatusItem.java
 C:\Git\ComprasFuturas\src\main\java\dao\Xml.java
 C:\Git\ComprasFuturas\src\main\java\dao\UsuarioXml.java
 C:\Git\ComprasFuturas\src\main\java\gui\GuiComprasFuturas.java
+C:\Git\ComprasFuturas\src\main\java\gui\GuiRelatorioCompras.java
 C:\Git\ComprasFuturas\src\main\java\dao\ProdutoDao.java
 C:\Git\ComprasFuturas\src\main\java\dao\ItemDao.java

@@ -34,7 +34,7 @@ public class Item implements Serializable{
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date  dataDaCompra;
     private String localDaCompra;
-    private String precoUnitario;
+    private Double precoUnitario;
     private StatusItem statusItem;
     
     public Item() {
@@ -102,11 +102,18 @@ public class Item implements Serializable{
         this.localDaCompra = localDaCompra;
     }
     
-    public String getPrecoUnitario(){
+    public Double getPrecoTotal(){
+        if(precoUnitario != null){
+            return precoUnitario * quantidade;
+        }
+        return 0.0;
+    }
+    
+    public Double getPrecoUnitario(){
         return precoUnitario;
     }
 
-    public void setPrecoUnitario(String precoUnitario) {
+    public void setPrecoUnitario(Double precoUnitario) {
         this.precoUnitario = precoUnitario;
     }
     

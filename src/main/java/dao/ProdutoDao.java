@@ -30,7 +30,6 @@ public class ProdutoDao {
     public void excluir (Produto produto){
         em.remove(em.merge(produto));
     }
-    
     public List<Produto> getProdutos (){
         Query q = em.createQuery("select p from Produto p order by p.id");
         return q.getResultList();
