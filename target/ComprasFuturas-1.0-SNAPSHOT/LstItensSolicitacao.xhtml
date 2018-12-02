@@ -14,6 +14,8 @@
                 <p:outputLabel value="#{guiComprasFuturas.usuario.nomeDeUsuario}" />
                 <p:outputLabel value="Solicitacao" />
                 <p:outputLabel value="#{guiSolicitacao.solicitacao.id}" />
+                <p:outputLabel value="Status" />
+                <p:outputLabel value="#{guiSolicitacao.solicitacao.status}" />
                 <p:commandButton value="Novo Item de Produtos" action="#{guiSolicitacao.abrirCadItemSolicitacao()}" ajax="false" />
                 <p:commandButton value="Voltar" action="LstSolicitacoes" ajax="false" />
             </h:panelGrid>
@@ -32,15 +34,18 @@
                     <p:outputLabel value="#{i.formaDePagamento}" />
                 </p:column>
                 <p:column headerText="Data da Compra">
-                    <p:outputLabel value="#{i.dataDaCompra}" />
+                    <p:outputLabel value="#{i.dataDaCompra.toGMTString()}" />
                 </p:column>
                 <p:column headerText="Local da Compra">
                     <p:outputLabel value="#{i.localDaCompra}" />
                 </p:column>
+                <p:column headerText="Status">
+                    <p:outputLabel value="#{i.statusItem}" />
+                </p:column>
                 <p:column>
-                    <p:commandButton value="Excluir" action="#{guiSolicitacao.excluir(i)}" ajax="false"/>
-                    <p:commandButton value="Alterar" action="#{guiSolicitacao.alterarItem(i)}" ajax="false"/>
-                    <p:commandButton value="Itens" action="#{guiSolicitacao.abrirCompraDeItem(i)}" ajax="false"/>
+                    <p:commandButton value="Excluir" action="#{guiSolicitacao.excluirCompraDeItem(i)}" ajax="false"/>
+                    <p:commandButton value="Alterar" action="#{guiSolicitacao.alterarCompraDeItem(i)}" ajax="false"/>
+                    <p:commandButton value="Comprar Item" action="#{guiSolicitacao.abrirCompraDeItem(i)}" ajax="false"/>
                 </p:column>
             </p:dataTable>
         </h:form>

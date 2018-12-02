@@ -7,8 +7,10 @@ C:\Git\ComprasFuturas\src\main\java\model\Produto.java
 C:\Git\ComprasFuturas\src\main\java\model\TipoMedidas.java
 C:\Git\ComprasFuturas\src\main\java\model\Status.java
 C:\Git\ComprasFuturas\src\main\java\converter\ConverterProduto.java
+C:\Git\ComprasFuturas\src\main\java\converter\FacesConvertLocalDate.java
 C:\Git\ComprasFuturas\src\main\java\gui\GuiSolicitacao.java
 C:\Git\ComprasFuturas\src\main\java\model\Item.java
+C:\Git\ComprasFuturas\src\main\java\model\StatusItem.java
 C:\Git\ComprasFuturas\src\main\java\dao\Xml.java
 C:\Git\ComprasFuturas\src\main\java\dao\UsuarioXml.java
 C:\Git\ComprasFuturas\src\main\java\gui\GuiComprasFuturas.java

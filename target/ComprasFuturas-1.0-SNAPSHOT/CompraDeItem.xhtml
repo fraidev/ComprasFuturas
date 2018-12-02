@@ -9,22 +9,30 @@
     </h:head>
     <h:body>
         <h:form>
-<!--            <h:panelGrid columns="2" >
+            <h:panelGrid columns="2" >
+                <p:outputLabel value="Produto" />
+                <p:outputLabel value="#{guiSolicitacao.item.produto.nome}"/>
+                <p:outputLabel value="Quantidade" />
+                <p:outputLabel value="#{guiSolicitacao.item.quantidade}" />
                 <p:outputLabel value="Id" />
-                <p:outputLabel value="#{guiSolicitacao.solicitacao.id}" />
-                <p:outputLabel value="Preço" />
-                <p:inputText value="#{guiSolicitacao.solicitacao.preco}" />
+                <p:outputLabel value="#{guiSolicitacao.item.id}" />
+                <p:outputLabel value="Preço Unitário" />
+                <p:inputText value="#{guiSolicitacao.item.precoUnitario}" />
                 <p:outputLabel value="Item" />
-                <p:selectOneMenu value="#{guiSolicitacao.solicitacao.formaDePagamento}" style="width:125px">
+                <p:selectOneMenu value="#{guiSolicitacao.item.formaDePagamento}" style="width:125px">
                     <f:selectItem itemLabel="Dinheiro" itemValue="dinheiro" />
                     <f:selectItem itemLabel="Cheque" itemValue="cheque" />
                     <f:selectItem itemLabel="Cheque pré" itemValue="chequePre" />
                     <f:selectItem itemLabel="Cartão" itemValue="cartao" />
                 </p:selectOneMenu>
-            </h:panelGrid>-->
+                <p:outputLabel for="button" value="Data da Compra" />
+                <p:calendar id="button" value="#{guiSolicitacao.item.dataDaCompra}" showOn="button" />
+                <p:outputLabel value="Local da Compra" />
+                <p:inputText value="#{guiSolicitacao.item.localDaCompra}" />
+            </h:panelGrid>
             
             <br />
-<!--            <p:commandButton value="Gravar" action="#{guiSolicitacao.gravar()}" ajax="false" />-->
+            <p:commandButton value="Gravar" action="#{guiSolicitacao.comprarItem()}" ajax="false" />
             <p:commandButton value="Voltar" action="#{guiSolicitacao.voltar()}" ajax="false" />
         </h:form>
     </h:body>

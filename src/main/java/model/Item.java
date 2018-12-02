@@ -6,14 +6,14 @@
 package model;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import javax.persistence.CascadeType;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -30,26 +30,28 @@ public class Item implements Serializable{
     private Produto produto;
     @ManyToOne
     private Solicitacao solicitacao;
-    
-    
     private FormaDePagamento formaDePagamento;
-    private LocalDateTime  dataDaCompra;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date  dataDaCompra;
     private String localDaCompra;
+    private String precoUnitario;
+    private StatusItem statusItem;
     
     public Item() {
     }
     
     public Item(Solicitacao solicitacao) {
+        this.statusItem = StatusItem.Espera;
         this.solicitacao = solicitacao;
-        this.formaDePagamento = FormaDePagamento.cartao;
-        this.dataDaCompra = LocalDateTime.now();
+//        this.formaDePagamento = FormaDePagamento.cartao;
+//        this.dataDaCompra = LocalDateTime.now();
     }
     
     public Item(Solicitacao solicitacao, Produto produto) {
+        this.statusItem = StatusItem.Espera;
         this.solicitacao = solicitacao;
         this.produto = produto;
         this.formaDePagamento = FormaDePagamento.cartao;
-        this.dataDaCompra = LocalDateTime.now();
     }
     
     public Long getId() {
@@ -84,11 +86,11 @@ public class Item implements Serializable{
         this.formaDePagamento = formaDePagamento;
     }
     
-    public LocalDateTime getDataDaCompra(){
+    public Date getDataDaCompra(){
         return dataDaCompra;
     }
 
-    public void setDataDaCompra(LocalDateTime dataDaCompra) {
+    public void setDataDaCompra(Date dataDaCompra) {
         this.dataDaCompra = dataDaCompra;
     }
     
@@ -99,6 +101,23 @@ public class Item implements Serializable{
     public void setLocalDaCompra(String localDaCompra) {
         this.localDaCompra = localDaCompra;
     }
+    
+    public String getPrecoUnitario(){
+        return precoUnitario;
+    }
+
+    public void setPrecoUnitario(String precoUnitario) {
+        this.precoUnitario = precoUnitario;
+    }
+    
+    public StatusItem getStatusItem(){
+        return statusItem;
+    }
+
+    public void setStatusItem(StatusItem statusItem) {
+        this.statusItem = statusItem;
+    }
+    
 
     @Override
     public int hashCode() {

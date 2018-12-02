@@ -11,9 +11,12 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 import javax.ejb.EJB;
 import model.Item;
 import model.Solicitacao;
+import model.Status;
+import model.StatusItem;
 
 /**
  *
@@ -31,6 +34,7 @@ public class GuiSolicitacao implements Serializable {
     private Solicitacao solicitacao;
     private List<Item> itens;
     private Item item;
+    private Boolean alterandoItem = false;
 
 
     /**
@@ -71,8 +75,11 @@ public class GuiSolicitacao implements Serializable {
     }
     
     public String gravarItem() {
-        itemDao.incluir(item);
-//        solicitacaoDao.alterar(solicitacao);
+        if (alterandoItem) {
+            itemDao.alterar(item);
+        } else {
+            itemDao.incluir(item);
+        }
         return abrir();
     }
     
@@ -85,13 +92,42 @@ public class GuiSolicitacao implements Serializable {
     }
     
     public String abrirCompraDeItem(Item item) {
+        this.item = item;
         return "CompraDeItem";
+    }
+    
+    public String alterarCompraDeItem(Item item) {
+        this.item = item;
+        alterandoItem = true;
+        return "CadItemSolicitacao";
+    }
+    
+    public String excluirCompraDeItem(Item item) {
+        itemDao.excluir(item);
+        return abrir();
     }
     
     public String voltar(){
         return abrir();
     }
 
+    public String comprarItem(){
+        item.setStatusItem(StatusItem.Comprado);
+        itemDao.alterar(item);
+        
+        boolean fecharSolicitacao = true;
+        for(Item i: itemDao.getItensByIdSolicitacao(solicitacao.getId())){
+            if(i.getStatusItem() == StatusItem.Espera){
+                fecharSolicitacao = false;
+            }
+        }
+        if(fecharSolicitacao == true){
+            solicitacao.setStatus(Status.fechado);
+            solicitacaoDao.alterar(solicitacao);
+        }
+        return abrir();
+    }
+    
     public SolicitacaoDao getSolicitacaoDao() {
         return solicitacaoDao;
     }
